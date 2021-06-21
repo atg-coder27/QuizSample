@@ -1,0 +1,80 @@
+
+{% extends 'BaseApp/base_after.html' %}
+{% load static %}
+{% block content %}
+    <div class = "container">
+        <br><br>
+    </div>
+
+    <div class = "container">
+        <div class = "row">
+            <div class = "col-sm-6">
+                <p><h1 class = "display-1"> Welcome To The Online Quiz System </h1> </p> 
+                <ul class = "list-unstyled">
+                <li><p class = "lead"> A fast,responsive online platform for all types of quizes</p> </li>
+                <li><p class = "lead"> Work with people all around the world </p> </li>
+                </ul>
+            </div>
+            <div class = "col-sm-6">
+                <p><img src="{% static 'images/laptop.jpg' %}" alt="" class = "laptop"></p>
+            </div> 
+        </div>
+    </div>
+    {% comment %} <a href="{% url 'logout' %}"> Logout </a>
+    <h1> </h1> 
+    <h1>Ongoing Quiz</h1>
+    <table>
+        <tr>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Start Time</th>
+        <th>End Time </th>
+        <th>Link </th>
+        </tr>
+        {% for quiz in ongoing %}
+            <tr>
+            <td>{{quiz.category}}</td>
+            <td>{{quiz.status}}</td>
+            <td>{{quiz.start_time}} </td>
+            <td>{{quiz.end_time}} </td>
+            <td><a href="{% url 'quiz' quiz.id  %}">Quiz Link </a> </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h1> Future Quiz </h1>
+    <table>
+    <tr>
+        <th>Category</th>
+        <th>Start Time</th>
+        <th>End Time </th>
+    </tr>
+    {% for quiz in future %}
+        <tr>
+        <td> {{quiz.category}}</td>
+        <td> {{quiz.start_time}} </td>
+        <td> {{quiz.end_time}} </td>
+        <td> {{quiz.status}} </td>
+        </tr>
+    {% endfor %}
+    </table>
+
+    <h1> Completed Quiz </h1>
+    <table>
+    <tr>
+        <th> Category </th>
+        <th> Start Time</th>
+        <th> End Time</th>
+        <th> Response </th>
+    </tr>
+    {% for quiz in completed %}
+        <tr>
+        <td>{{quiz.category}}</td>
+        <td>{{quiz.start_time}}</td>
+        <td>{{quiz.end_time}}</td>
+        <td><a href="{% url 'evalquiz' quiz.id %}"> Response </a> </td>
+        </tr><br>
+    </table>
+    {% endfor %} {% endcomment %}
+
+{% endblock content %}>

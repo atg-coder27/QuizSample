@@ -1,0 +1,35 @@
+{% extends 'BaseApp/base_after.html' %}
+{% load static %}
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/question.css' %}">
+{% endblock cssfiles %}
+{% block content %}
+    <div class = "container">
+        <br><br>
+        <h4 class = "display-6">Q{{question.current_no}}) {{ question.title }}</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <!-- {% for fm in form %}
+                {{fm.label_tag}} {{fm}} {{fm.errors|striptags}} <br><br> 
+            {% endfor %} -->
+            {{form.as_p}}
+            {% if start == last %}
+                
+            {% else %}
+                {% if current == start %}
+                    <input class="btn btn-primary" type="submit" name="next" value="next"> 
+                {% elif current == last %}
+                    <input class="btn btn-primary" type="submit" name="previous" value="previous">
+                {% else %}
+                    <input class="btn btn-primary" type="submit" name="previous" value="previous">
+                    <input class="btn btn-primary" type="submit" name="next" value="next">
+                {% endif %}
+
+            {% endif %}
+
+            <input class="btn btn-primary" type="submit" name="submit" value="submit">
+            {% comment %} <input class="btn btn-primary" type="submit" name="previous" value="previous">
+            <input class="btn btn-primary" type="submit" name="next" value="next"> {% endcomment %}
+        </form>
+    </div>
+{% endblock content %}

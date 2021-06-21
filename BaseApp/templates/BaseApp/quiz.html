@@ -1,0 +1,18 @@
+{% extends 'BaseApp/base_after.html' %}
+
+{% block content %}
+    <div class = "container centralize">
+        <h1 class = "display-1"> Instructions </h1>
+
+        <p class = "lead"> Student is supposed to give quiz in the schduled time. Answers will be auto-saved. All the best.. </p>
+        <h5> Start Time </h5>
+        <p class = "lead"> {{quiz.start_time}} </p>
+        <h5> End Time </h5>
+        <p class = "lead"> {{quiz.end_time}} </p>
+        <br> <br>
+        <form action = "{% url 'question' quiz.id 1 %}" method = "GET">
+            <button class="btn btn-outline-primary" type="submit">Click Here To Start The Quiz</button>
+        {% comment %} <a href="{% url 'question' quiz.id 1 %}"> Click Here to Start the quiz</a> {% endcomment %}
+        </form>
+    </div>
+{% endblock content %}

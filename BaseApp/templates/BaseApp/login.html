@@ -1,0 +1,22 @@
+{% extends 'BaseApp/base_before.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock cssfiles %}
+
+
+
+{% block content %}
+    <div class = "container">
+        <h1> Login Form </h1>
+        <form action="" method="POST" novalidate>
+            {% csrf_token %}
+            {{form|crispy}}
+            <a href="{% url 'password_reset' %}">Forgot Password</a> <br><br>
+            <button class="btn btn-outline-primary" type="submit">Submit</button>
+        </form>
+        <br><br>
+    </div>
+{% endblock content %}
